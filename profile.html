@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - MyShop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="menu-container">
+    <div class="logo-container">
+      <img src="logo.png" class="logo" alt="MyShop Logo">
+      <span class="shop-name">MyShop</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <span id="userSection"></span>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Profile</h2>
+  <div id="profileContent"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser) location.href="index.html";
+
+let div=document.getElementById("profileContent");
+if(currentUser.role==="buyer"){
+  div.innerHTML="<h3>Orders History</h3>";
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  orders.filter(o=>o.buyer===currentUser.user).forEach(o=>{
+    let html = `<div class="cart-item"><strong>Date:</strong> ${o.date}<br>`;
+    o.products.forEach(p=> html+=`${p.pname} - ${p.offerPrice} BDT<br>`);
+    html+="</div>";
+    div.innerHTML += html;
+  });
+} else if(currentUser.role==="seller"){
+  div.innerHTML="<h3>Your Products & Sales</h3>";
+  let products = JSON.parse(localStorage.getItem("products"))||[];
+  let sales = JSON.parse(localStorage.getItem("sales"))||[];
+  products.filter(p=>p.seller===currentUser.user).forEach(p=>{
+    div.innerHTML+=`<div class="cart-item">${p.pname} - ${p.offerPrice} BDT
+      <button onclick="deleteProduct(${p.id})">Delete</button>
+    </div>`;
+  });
+  div.innerHTML+="<h3>Sales History</h3>";
+  sales.filter(s=>s.seller===currentUser.user).forEach(s=>{
+    s.productsSold.forEach(ps=>{
+      div.innerHTML+=`<div class="cart-item">${ps.pname} sold to ${ps.buyer} on ${ps.date}</div>`;
+    });
+  });
+}
+</script>
+</body>
+</html>

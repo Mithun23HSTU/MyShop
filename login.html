@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - MyShop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="menu-container">
+    <div class="logo-container">
+      <img src="logo.png" class="logo" alt="MyShop Logo">
+      <span class="shop-name">MyShop</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <span id="userSection">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Login</h2>
+  <input type="text" id="loginUser" placeholder="Username"><br><br>
+  <input type="password" id="loginPass" placeholder="Password"><br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

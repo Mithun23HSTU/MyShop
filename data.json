@@ -1,0 +1,29 @@
+{
+  "users": [
+    {"user": "seller1", "pass": "123", "role": "seller"},
+    {"user": "buyer1", "pass": "123", "role": "buyer"}
+  ],
+  "products": [
+    {
+      "id": 1,
+      "seller": "seller1",
+      "pname": "Laptop",
+      "price": 50000,
+      "offer": 10,
+      "offerPrice": 45000,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "seller": "seller1",
+      "pname": "Smartphone",
+      "price": 20000,
+      "offer": 5,
+      "offerPrice": 19000,
+      "image": ""
+    }
+  ],
+  "cart": [],
+  "orders": [],
+  "sales": []
+}

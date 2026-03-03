@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Dashboard - MyShop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="menu-container">
+    <div class="logo-container">
+      <img src="logo.png" class="logo" alt="MyShop Logo">
+      <span class="shop-name">MyShop</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <span id="userSection"></span>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Add Product</h2>
+  <input type="text" id="pname" placeholder="Product Name"><br><br>
+  <input type="number" id="price" placeholder="Price"><br><br>
+  <input type="number" id="offer" placeholder="Offer %"><br><br>
+  <input type="file" id="pimage"><br><br>
+  <button onclick="addProduct()">Add Product</button>
+
+  <h2>Your Products</h2>
+  <div id="productList"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if(!currentUser || currentUser.role!=="seller") location.href="index.html";
+loadProducts();
+</script>
+</body>
+</html>
